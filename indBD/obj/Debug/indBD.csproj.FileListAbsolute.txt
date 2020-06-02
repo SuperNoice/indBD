@@ -7,3 +7,4 @@ C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.Properties.Resources.res
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.csproj.GenerateResource.cache
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.exe
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.pdb
+C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.csproj.CoreCompileInputs.cache
