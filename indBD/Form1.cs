@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace indBD
 {
@@ -15,6 +16,25 @@ namespace indBD
         public Form1()
         {
             InitializeComponent();
+
+            MySqlConnection connection = new MySqlConnection("password=228369; port=3306; server=localhost; username=root; database=leonid");
+
+            connection.Open();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand();
+
+            DataTable table = new DataTable();
+
+
+            
+
+
+
+            connection.Close();
         }
-  }
+
+       
+    }
 }
