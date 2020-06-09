@@ -2,7 +2,6 @@ C:\Users\Super\source\repos\indBD\indBD\bin\Debug\indBD.exe.config
 C:\Users\Super\source\repos\indBD\indBD\bin\Debug\indBD.exe
 C:\Users\Super\source\repos\indBD\indBD\bin\Debug\indBD.pdb
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.csprojAssemblyReference.cache
-C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.Form1.resources
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.Properties.Resources.resources
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.csproj.GenerateResource.cache
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.exe
@@ -24,3 +23,5 @@ C:\Users\Super\source\repos\indBD\indBD\bin\Debug\System.Numerics.Vectors.dll
 C:\Users\Super\source\repos\indBD\indBD\bin\Debug\MySql.Data.xml
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.exe.config
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.csproj.CopyComplete
+C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.Connect.resources
+C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.MainWindow.resources

@@ -16,7 +16,11 @@ namespace indBD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            MainWindow main = new MainWindow();
+
+            if (main.IsDisposed == false) Application.Run(main);
+
         }
     }
 }
