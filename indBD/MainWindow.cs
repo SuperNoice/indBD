@@ -17,7 +17,6 @@ namespace indBD
         MySqlConnection connection;
         MySqlDataAdapter adapter = new MySqlDataAdapter();
         MySqlCommand command = new MySqlCommand();
-        DataTable table = new DataTable();
 
         public MainWindow()
         {
@@ -28,36 +27,55 @@ namespace indBD
             if (connectForm.doLogin == false) { this.Close(); this.Dispose(true); }
             connection = connectForm.connection;
 
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
-            command.Connection = connection;
-            command.CommandText = "SELECT * FROM `tabl`";
-            adapter.SelectCommand = command;
-
-            adapter.Fill(table);
-
-            dataGridView1.DataSource = table;
-
-
+            string sqlCommand = "SHOW DATABASES";
+            dataGridView1.DataSource = DoSqlCommand(sqlCommand);
         }
 
         void ConnectionOpen()
         {
             if (connection.State == ConnectionState.Closed)
-                connection.Open();
+                try { connection.Open(); }
+                catch (Exception)
+                {
+                    Connect connectForm = new Connect();
+                    connectForm.Show();
+                }
         }
 
         void ConnectionClose()
         {
             if (connection.State == ConnectionState.Open)
-                connection.Close();
+                try { connection.Close(); }
+                catch (Exception)
+                {
+                    Connect connectForm = new Connect();
+                    connectForm.Show();
+                }
         }
 
-        
+        DataTable DoSqlCommand(string sqlCommand)
+        {
+            DataTable table = new DataTable();
+            ConnectionOpen();
+
+            command.Connection = connection;
+            command.CommandText = sqlCommand;
+
+            adapter.SelectCommand = command;
+
+            try { adapter.Fill(table); }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, "Error!"); }
+
+            ConnectionClose();
+
+            return table;
+        }
+
     }
 }
