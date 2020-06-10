@@ -25,3 +25,4 @@ C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.exe.config
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.csproj.CopyComplete
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.Connect.resources
 C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.MainWindow.resources
+C:\Users\Super\source\repos\indBD\indBD\obj\Debug\indBD.Insert.resources

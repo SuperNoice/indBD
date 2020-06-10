@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace indBD
             Application.SetCompatibleTextRenderingDefault(false);
 
             MainWindow main = new MainWindow();
-
+            
             if (main.IsDisposed == false) Application.Run(main);
 
         }

@@ -15,6 +15,7 @@ namespace indBD
 {
     public partial class MainWindow : Form
     {
+        int selectedRequest;
         MySqlConnection connection;
         MySqlDataAdapter adapter = new MySqlDataAdapter();
         MySqlCommand command = new MySqlCommand();
@@ -25,7 +26,7 @@ namespace indBD
 
             Connect connectForm = new Connect();
             Application.Run(connectForm);
-            if (connectForm.doLogin == false) { this.Close(); this.Dispose(true); }
+            if (connectForm.doLogin == false) { this.Close(); this.Dispose(true); return; }
             connection = connectForm.connection;
 
             //Инициализация
@@ -47,11 +48,11 @@ namespace indBD
                 "CREATE TABLE IF NOT EXISTS Клиенты (" +
                 "`Код клиента` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
                 "ФИО VARCHAR(40), " +
-                "`Дата рождения` VARCHAR(10), " +
+                "`Дата рождения` DATE, " +
                 "`Место жительства` VARCHAR(50), " +
                 "Документ VARCHAR(40), " +
                 "`Серия номер паспорта` VARCHAR(15), " +
-                "`Дата выдачи` VARCHAR(10), " +
+                "`Дата выдачи` DATE, " +
                 "`Кем выдан` VARCHAR(50), " +
                 "`Контактный телефон` VARCHAR(15)" +
                 ")ENGINE = InnoDB; " +
@@ -59,15 +60,15 @@ namespace indBD
                 "CREATE TABLE IF NOT EXISTS Договор (" +
                 "`Код договора` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
                 "Клиент INT, " +
-                "`Дата выдачи` VARCHAR(10), " +
+                "`Дата выдачи` DATE, " +
                 "`Минимальный срок залога` INT, " +
                 "`Максимальный срок залога` INT, " +
                 "`Размер ссуды` INT, " +
                 "`Процент в день` INT, " +
                 "`Процент в день за хранение` INT, " +
                 "`Гарантированный срок хранения` INT, " +
-                "`Фактическая дата выкупа` VARCHAR(10), " +
-                "`Фактическая сумма выкупа` VARCHAR(10), " +
+                "`Фактическая дата выкупа` DATE, " +
+                "`Фактическая сумма выкупа` DATE, " +
                 "FOREIGN KEY(Клиент) REFERENCES Клиенты(`Код клиента`)" +
                 ")ENGINE = InnoDB; " +
 
@@ -90,12 +91,19 @@ namespace indBD
                 "`Учетный код` INT, " +
                 "`Цена продажи` INT, " +
                 "Сотрудник INT, " +
-                "`Дата продажи` VARCHAR(10), " +
+                "`Дата продажи` DATE, " +
                 "FOREIGN KEY(`Учетный код`) REFERENCES `Предметы залога`(`Учетный код`), " +
                 "FOREIGN KEY(Сотрудник) REFERENCES Сотрудники(`Код сотрудника`)" +
                 ")ENGINE = InnoDB; " +
 
                 "");
+
+            // Стартовая таблица
+            setDefaultButtonColor();
+            dogovorButton.BackColor = Color.FromArgb(165, 208, 255);
+            selectedRequest = 1;
+
+            mainDataGridView.DataSource = DoSqlCommand("SELECT * FROM Договор");
         }
 
         void ConnectionOpen()
@@ -120,7 +128,7 @@ namespace indBD
                 }
         }
 
-        DataTable DoSqlCommand(string sqlCommand)
+        public DataTable DoSqlCommand(string sqlCommand)
         {
             DataTable table = new DataTable();
             ConnectionOpen();
@@ -143,6 +151,8 @@ namespace indBD
         {
             setDefaultButtonColor();
             dogovorButton.BackColor = Color.FromArgb(165, 208, 255);
+            selectedRequest = 1;
+
             mainDataGridView.DataSource = DoSqlCommand("SELECT * FROM Договор");
         }
 
@@ -150,6 +160,8 @@ namespace indBD
         {
             setDefaultButtonColor();
             itemsButton.BackColor = Color.FromArgb(165, 208, 255);
+            selectedRequest = 2;
+
             mainDataGridView.DataSource = DoSqlCommand("SELECT * FROM `Предметы залога`");
         }
 
@@ -157,6 +169,8 @@ namespace indBD
         {
             setDefaultButtonColor();
             salesButton.BackColor = Color.FromArgb(165, 208, 255);
+            selectedRequest = 3;
+
             mainDataGridView.DataSource = DoSqlCommand("SELECT * FROM Продажи");
         }
 
@@ -164,6 +178,8 @@ namespace indBD
         {
             setDefaultButtonColor();
             categoryButton.BackColor = Color.FromArgb(165, 208, 255);
+            selectedRequest = 4;
+
             mainDataGridView.DataSource = DoSqlCommand("SELECT * FROM Категории");
         }
 
@@ -171,6 +187,8 @@ namespace indBD
         {
             setDefaultButtonColor();
             clientsButton.BackColor = Color.FromArgb(165, 208, 255);
+            selectedRequest = 5;
+
             mainDataGridView.DataSource = DoSqlCommand("SELECT * FROM Клиенты");
         }
 
@@ -178,6 +196,8 @@ namespace indBD
         {
             setDefaultButtonColor();
             workersButton.BackColor = Color.FromArgb(165, 208, 255);
+            selectedRequest = 6;
+
             mainDataGridView.DataSource = DoSqlCommand("SELECT * FROM Сотрудники");
         }
 
@@ -198,6 +218,65 @@ namespace indBD
             categoryButton.BackColor = color;
             clientsButton.BackColor = color;
             workersButton.BackColor = color;
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            if (selectedRequest <= 6)
+            {
+                DoSqlCommand("INSERT INTO " + getTableName(selectedRequest) + " VALUES " + getValuesForInsert(selectedRequest));
+            }
+        }
+
+        private void changeButton_Click(object sender, EventArgs e)
+        {
+            if (selectedRequest <= 6)
+            {
+
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (selectedRequest <= 6)
+            {
+
+            }
+        }
+
+        private void reqestButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private string getTableName(int selected)
+        {
+            switch (selected)
+            {
+                case 1: return "Договор";
+                case 2: return "`Предметы залога`";
+                case 3: return "Продажи";
+                case 4: return "Категории";
+                case 5: return "Клиенты";
+                case 6: return "Сотрудники";
+
+                default: return "none";
+            }
+        }
+
+        private string getValuesForInsert(int selected)
+        {
+            switch (selected)
+            {
+                case 1: return "Договор";
+                case 2: return "`Предметы залога`";
+                case 3: return "Продажи";
+                case 4: return "Категории";
+                case 5: return "Клиенты";
+                case 6: return "(NULL,'grhghrhsjhsjtjrtjsrjsrjtshehe',NULL)";
+
+                default: return "none";
+            }
         }
     }
 }

@@ -38,10 +38,18 @@
             this.categoryButton = new System.Windows.Forms.Button();
             this.clientsButton = new System.Windows.Forms.Button();
             this.workersButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.reqestButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.requestСomboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainDataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainDataGridView
@@ -51,6 +59,8 @@
             this.mainDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.mainDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.mainDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
@@ -76,13 +86,13 @@
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.mainDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.mainDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.mainDataGridView.Size = new System.Drawing.Size(1118, 502);
+            this.mainDataGridView.Size = new System.Drawing.Size(1120, 507);
             this.mainDataGridView.TabIndex = 0;
             // 
             // dogovorButton
             // 
             this.dogovorButton.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.dogovorButton.Location = new System.Drawing.Point(12, 12);
+            this.dogovorButton.Location = new System.Drawing.Point(6, 19);
             this.dogovorButton.Name = "dogovorButton";
             this.dogovorButton.Size = new System.Drawing.Size(75, 38);
             this.dogovorButton.TabIndex = 1;
@@ -93,7 +103,7 @@
             // itemsButton
             // 
             this.itemsButton.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.itemsButton.Location = new System.Drawing.Point(93, 12);
+            this.itemsButton.Location = new System.Drawing.Point(87, 18);
             this.itemsButton.Name = "itemsButton";
             this.itemsButton.Size = new System.Drawing.Size(75, 38);
             this.itemsButton.TabIndex = 2;
@@ -104,7 +114,7 @@
             // salesButton
             // 
             this.salesButton.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.salesButton.Location = new System.Drawing.Point(174, 12);
+            this.salesButton.Location = new System.Drawing.Point(168, 19);
             this.salesButton.Name = "salesButton";
             this.salesButton.Size = new System.Drawing.Size(75, 38);
             this.salesButton.TabIndex = 3;
@@ -114,7 +124,7 @@
             // 
             // categoryButton
             // 
-            this.categoryButton.Location = new System.Drawing.Point(255, 12);
+            this.categoryButton.Location = new System.Drawing.Point(249, 19);
             this.categoryButton.Name = "categoryButton";
             this.categoryButton.Size = new System.Drawing.Size(75, 38);
             this.categoryButton.TabIndex = 4;
@@ -124,7 +134,7 @@
             // 
             // clientsButton
             // 
-            this.clientsButton.Location = new System.Drawing.Point(336, 12);
+            this.clientsButton.Location = new System.Drawing.Point(330, 19);
             this.clientsButton.Name = "clientsButton";
             this.clientsButton.Size = new System.Drawing.Size(75, 38);
             this.clientsButton.TabIndex = 5;
@@ -134,7 +144,7 @@
             // 
             // workersButton
             // 
-            this.workersButton.Location = new System.Drawing.Point(417, 12);
+            this.workersButton.Location = new System.Drawing.Point(411, 19);
             this.workersButton.Name = "workersButton";
             this.workersButton.Size = new System.Drawing.Size(75, 38);
             this.workersButton.TabIndex = 6;
@@ -142,53 +152,114 @@
             this.workersButton.UseVisualStyleBackColor = true;
             this.workersButton.Click += new System.EventHandler(this.workersButton_Click);
             // 
-            // button1
+            // addButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 22);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addButton.Location = new System.Drawing.Point(6, 19);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 37);
+            this.addButton.TabIndex = 7;
+            this.addButton.Text = "Добавить";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // button2
+            // changeButton
             // 
-            this.button2.Location = new System.Drawing.Point(93, 56);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 22);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Изменить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.changeButton.Location = new System.Drawing.Point(81, 19);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(75, 37);
+            this.changeButton.TabIndex = 8;
+            this.changeButton.Text = "Изменить";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
             // 
-            // button3
+            // deleteButton
             // 
-            this.button3.Location = new System.Drawing.Point(174, 56);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 22);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.deleteButton.Location = new System.Drawing.Point(156, 19);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 37);
+            this.deleteButton.TabIndex = 9;
+            this.deleteButton.Text = "Удалить";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // reqestButton
+            // 
+            this.reqestButton.Location = new System.Drawing.Point(286, 19);
+            this.reqestButton.Name = "reqestButton";
+            this.reqestButton.Size = new System.Drawing.Size(75, 37);
+            this.reqestButton.TabIndex = 15;
+            this.reqestButton.Text = "Запрос";
+            this.reqestButton.UseVisualStyleBackColor = true;
+            this.reqestButton.Click += new System.EventHandler(this.reqestButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dogovorButton);
+            this.groupBox1.Controls.Add(this.itemsButton);
+            this.groupBox1.Controls.Add(this.salesButton);
+            this.groupBox1.Controls.Add(this.categoryButton);
+            this.groupBox1.Controls.Add(this.clientsButton);
+            this.groupBox1.Controls.Add(this.workersButton);
+            this.groupBox1.Location = new System.Drawing.Point(12, 7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(492, 66);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Меню";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox2.Controls.Add(this.addButton);
+            this.groupBox2.Controls.Add(this.changeButton);
+            this.groupBox2.Controls.Add(this.deleteButton);
+            this.groupBox2.Location = new System.Drawing.Point(511, 7);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(237, 66);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Действия";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.requestСomboBox);
+            this.groupBox3.Controls.Add(this.reqestButton);
+            this.groupBox3.Location = new System.Drawing.Point(755, 7);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(377, 66);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Запросы";
+            // 
+            // requestСomboBox
+            // 
+            this.requestСomboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.requestСomboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.requestСomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.requestСomboBox.FormattingEnabled = true;
+            this.requestСomboBox.Location = new System.Drawing.Point(15, 28);
+            this.requestСomboBox.Name = "requestСomboBox";
+            this.requestСomboBox.Size = new System.Drawing.Size(255, 21);
+            this.requestСomboBox.TabIndex = 11;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 596);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.workersButton);
-            this.Controls.Add(this.clientsButton);
-            this.Controls.Add(this.categoryButton);
-            this.Controls.Add(this.salesButton);
-            this.Controls.Add(this.itemsButton);
-            this.Controls.Add(this.dogovorButton);
+            this.ClientSize = new System.Drawing.Size(1144, 601);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.mainDataGridView);
-            this.MinimumSize = new System.Drawing.Size(520, 270);
+            this.MinimumSize = new System.Drawing.Size(1160, 200);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "База данных ломбарда";
             ((System.ComponentModel.ISupportInitialize)(this.mainDataGridView)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -202,9 +273,14 @@
         private System.Windows.Forms.Button categoryButton;
         private System.Windows.Forms.Button clientsButton;
         private System.Windows.Forms.Button workersButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button changeButton;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button reqestButton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox requestСomboBox;
     }
 }
 
