@@ -12,9 +12,29 @@ namespace indBD
 {
     public partial class ItemsRedactor : Form
     {
-        public ItemsRedactor()
+        public enum startMode
+        {
+            Add, Edit, Delete
+        }
+
+        public ItemsRedactor(MainMenu mainMenu, startMode mode)
         {
             InitializeComponent();
+
+            if (mode == startMode.Add)
+            {
+
+            }
+
+            if (mode == startMode.Edit)
+            {
+
+            }
+
+            if (mode == startMode.Delete)
+            {
+
+            }
         }
 
         private void uchetniyCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -28,6 +48,21 @@ namespace indBD
         }
 
         private void dogovorCodeСomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edit_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delete_button(object sender, EventArgs e)
         {
 
         }

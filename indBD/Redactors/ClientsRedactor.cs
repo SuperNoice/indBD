@@ -12,12 +12,49 @@ namespace indBD
 {
     public partial class ClientsRedactor : Form
     {
-        public ClientsRedactor()
+        public enum startMode
+        {
+            Add, Edit, Delete
+        }
+
+        public ClientsRedactor(MainMenu mainMenu, startMode mode)
         {
             InitializeComponent();
+
+            if (mode == startMode.Add)
+            {
+                codeClientComboBox.Visible = false;
+                confirmButton.Text = "Добавить";
+            }
+
+            if (mode == startMode.Edit)
+            {
+                confirmButton.Text = "Изменить";
+            }
+
+            if (mode == startMode.Delete)
+            {
+                confirmButton.Text = "Удалить";
+
+            }
         }
 
         private void codeClientComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edit_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delete_button(object sender, EventArgs e)
         {
 
         }

@@ -15,7 +15,7 @@ namespace indBD
 {
     public partial class MainWindow : Form
     {
-        int selectedRequest;
+        public int selectedRequest;
         MySqlConnection connection;
         MySqlDataAdapter adapter = new MySqlDataAdapter();
         MySqlCommand command = new MySqlCommand();
@@ -69,7 +69,7 @@ namespace indBD
                 "`Гарантированный срок хранения` INT, " +
                 "`Фактическая дата выкупа` DATE, " +
                 "`Фактическая сумма выкупа` DATE, " +
-                "FOREIGN KEY(Клиент) REFERENCES Клиенты(`Код клиента`)" +
+                "FOREIGN KEY(Клиент) REFERENCES Клиенты(`Код клиента`) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")ENGINE = InnoDB; " +
 
                 "CREATE TABLE IF NOT EXISTS `Предметы залога` (" +
@@ -82,8 +82,8 @@ namespace indBD
                 "`Оценочная стоимость` INT, " +
                 "`Код товара` INT, " +
                 "Статус VARCHAR(10), " +
-                "FOREIGN KEY(`Код категории`) REFERENCES Категории(`Код категории`), " +
-                "FOREIGN KEY(`Код товара`) REFERENCES Договор(`Код договора`)" +
+                "FOREIGN KEY(`Код категории`) REFERENCES Категории(`Код категории`) ON DELETE CASCADE ON UPDATE CASCADE, " +
+                "FOREIGN KEY(`Код товара`) REFERENCES Договор(`Код договора`) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")ENGINE = InnoDB; " +
 
                 "CREATE TABLE IF NOT EXISTS Продажи (" +
@@ -92,8 +92,8 @@ namespace indBD
                 "`Цена продажи` INT, " +
                 "Сотрудник INT, " +
                 "`Дата продажи` DATE, " +
-                "FOREIGN KEY(`Учетный код`) REFERENCES `Предметы залога`(`Учетный код`), " +
-                "FOREIGN KEY(Сотрудник) REFERENCES Сотрудники(`Код сотрудника`)" +
+                "FOREIGN KEY(`Учетный код`) REFERENCES `Предметы залога`(`Учетный код`) ON DELETE CASCADE ON UPDATE CASCADE, " +
+                "FOREIGN KEY(Сотрудник) REFERENCES Сотрудники(`Код сотрудника`) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")ENGINE = InnoDB; " +
 
                 "");
@@ -104,6 +104,7 @@ namespace indBD
             selectedRequest = 1;
 
             mainDataGridView.DataSource = DoSqlCommand("SELECT * FROM Договор");
+
         }
 
         void ConnectionOpen()
@@ -222,25 +223,61 @@ namespace indBD
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (selectedRequest <= 6)
+            switch (selectedRequest)
             {
-                DoSqlCommand("INSERT INTO " + getTableName(selectedRequest) + " VALUES " + getValuesForInsert(selectedRequest));
+                case 1: break;
+                case 2: break;
+                case 3: break;
+                case 4:
+                    {
+                        CategoryRedactor category = new CategoryRedactor(this, CategoryRedactor.startMode.Add);
+                        category.Show();
+                        break;
+                    }
+                case 5: break;
+                case 6: break;
+
+                default: break;
             }
         }
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-            if (selectedRequest <= 6)
+            switch (selectedRequest)
             {
+                case 1: break;
+                case 2: break;
+                case 3: break;
+                case 4:
+                    {
+                        CategoryRedactor category = new CategoryRedactor(this, CategoryRedactor.startMode.Edit);
+                        category.Show();
+                        break;
+                    }
+                case 5: break;
+                case 6: break;
 
+                default: break;
             }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (selectedRequest <= 6)
+            switch (selectedRequest)
             {
+                case 1: break;
+                case 2: break;
+                case 3: break;
+                case 4:
+                    {
+                        CategoryRedactor category = new CategoryRedactor(this, CategoryRedactor.startMode.Delete);
+                        category.Show();
+                        break;
+                    }
+                case 5: break;
+                case 6: break;
 
+                default: break;
             }
         }
 
@@ -249,9 +286,9 @@ namespace indBD
 
         }
 
-        private string getTableName(int selected)
+        private string getTableName(int selectedInMenu)
         {
-            switch (selected)
+            switch (selectedInMenu)
             {
                 case 1: return "Договор";
                 case 2: return "`Предметы залога`";
@@ -264,19 +301,18 @@ namespace indBD
             }
         }
 
-        private string getValuesForInsert(int selected)
+        public List<string> getCurrentRowsList(string sqlCommand, string column, bool addVariant)
         {
-            switch (selected)
-            {
-                case 1: return "Договор";
-                case 2: return "`Предметы залога`";
-                case 3: return "Продажи";
-                case 4: return "Категории";
-                case 5: return "Клиенты";
-                case 6: return "(NULL,'grhghrhsjhsjtjrtjsrjsrjtshehe',NULL)";
+            DataTable data = DoSqlCommand(sqlCommand);
+            List<string> list = new List<string>();
+            if (addVariant) list.Add("+Добавить");
 
-                default: return "none";
+            foreach (DataRow row in data.Rows)
+            {
+                list.Add(row.Field<int>(column).ToString());
             }
+
+            return list;
         }
     }
 }

@@ -12,12 +12,47 @@ namespace indBD
 {
     public partial class WorkersRedactor : Form
     {
-        public WorkersRedactor()
+        public enum startMode
+        {
+            Add, Edit, Delete
+        }
+
+        public WorkersRedactor(MainMenu mainMenu, startMode mode)
         {
             InitializeComponent();
+
+            if (mode == startMode.Add)
+            {
+
+            }
+
+            if (mode == startMode.Edit)
+            {
+
+            }
+
+            if (mode == startMode.Delete)
+            {
+
+            }
         }
 
         private void workerCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edit_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delete_button(object sender, EventArgs e)
         {
 
         }

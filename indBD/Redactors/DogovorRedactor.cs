@@ -12,9 +12,29 @@ namespace indBD
 {
     public partial class DogovorRedactor : Form
     {
-        public DogovorRedactor()
+        public enum startMode
+        {
+            Add, Edit, Delete
+        }
+
+        public DogovorRedactor(MainMenu mainMenu, startMode mode)
         {
             InitializeComponent();
+
+            if (mode == startMode.Add)
+            {
+
+            }
+
+            if (mode == startMode.Edit)
+            {
+
+            }
+
+            if (mode == startMode.Delete)
+            {
+
+            }
         }
 
         private void codeDogovoraComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -23,6 +43,21 @@ namespace indBD
         }
 
         private void clientIdComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edit_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delete_button(object sender, EventArgs e)
         {
 
         }

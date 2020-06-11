@@ -31,7 +31,7 @@
             this.confirmButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.itemNameMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.categoryNameMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.categoryCodeComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -62,18 +62,20 @@
             this.label2.TabIndex = 68;
             this.label2.Text = "Код категории";
             // 
-            // itemNameMaskedTextBox
+            // categoryNameMaskedTextBox
             // 
-            this.itemNameMaskedTextBox.Location = new System.Drawing.Point(172, 170);
-            this.itemNameMaskedTextBox.Mask = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            this.itemNameMaskedTextBox.Name = "itemNameMaskedTextBox";
-            this.itemNameMaskedTextBox.Size = new System.Drawing.Size(162, 20);
-            this.itemNameMaskedTextBox.TabIndex = 61;
+            this.categoryNameMaskedTextBox.Location = new System.Drawing.Point(172, 170);
+            this.categoryNameMaskedTextBox.Mask = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            this.categoryNameMaskedTextBox.Name = "categoryNameMaskedTextBox";
+            this.categoryNameMaskedTextBox.Size = new System.Drawing.Size(162, 20);
+            this.categoryNameMaskedTextBox.TabIndex = 61;
             // 
             // categoryCodeComboBox
             // 
             this.categoryCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryCodeComboBox.FormattingEnabled = true;
+            this.categoryCodeComboBox.Items.AddRange(new object[] {
+            "+Добавить"});
             this.categoryCodeComboBox.Location = new System.Drawing.Point(172, 143);
             this.categoryCodeComboBox.Name = "categoryCodeComboBox";
             this.categoryCodeComboBox.Size = new System.Drawing.Size(62, 21);
@@ -88,11 +90,12 @@
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.itemNameMaskedTextBox);
+            this.Controls.Add(this.categoryNameMaskedTextBox);
             this.Controls.Add(this.categoryCodeComboBox);
             this.MaximumSize = new System.Drawing.Size(430, 440);
             this.MinimumSize = new System.Drawing.Size(430, 440);
             this.Name = "CategoryRedactor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CategoryRedactor";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -103,7 +106,7 @@
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox itemNameMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox categoryNameMaskedTextBox;
         private System.Windows.Forms.ComboBox categoryCodeComboBox;
     }
 }
